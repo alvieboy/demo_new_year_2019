@@ -2,14 +2,14 @@
 #include <QPainter>
 #include <QDebug>
 
-#define ZOOMIDX 1
+#define ZOOMIDX 4
 #define ZOOMMUL (1<<ZOOMIDX)
 
 RenderArea::RenderArea(QWidget *parent): QVideoWidget(parent)
 {
 //    setBackgroundRole(QPalette::Base);
 //    setAutoFillBackground(true);
-    image = new QImage(160*ZOOMMUL, 120*ZOOMMUL, QImage::Format_RGB32 );
+    image = new QImage(160*ZOOMMUL, 128*ZOOMMUL, QImage::Format_RGB32 );
     videomode = false;
 
 }
@@ -42,6 +42,14 @@ void RenderArea::drawHLine(int x, int y, int width, uint32_t color)
     while (width--) {
         drawPixel(x,y,color);
         x++;
+    }
+}
+
+void RenderArea::drawVLine(int x, int y, int height, uint32_t color)
+{
+    while (height--) {
+        drawPixel(x,y,color);
+        y++;
     }
 }
 
@@ -91,12 +99,6 @@ void RenderArea::drawPixel(int x, int y, uint32_t color)
     }
 }
 
-void RenderArea::willyFinishedMove()
-{
-    qDebug()<<"Wally finished move";
-}
-
-
 QVideoWidget* RenderArea::getVideoWidget(){
     return this;
 }
@@ -104,4 +106,6 @@ QVideoWidget* RenderArea::getVideoWidget(){
 void RenderArea::setVideoMode(bool en)
 {
     videomode = en;
+    if (en)
+        showFullScreen();
 }

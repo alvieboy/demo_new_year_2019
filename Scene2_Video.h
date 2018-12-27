@@ -16,11 +16,11 @@ public:
     Scene2_Video(ScreenDrawer*);
     virtual void drawTo(ScreenDrawer*) override;
     virtual void start() override;
+    virtual void stop() override;
     virtual void reset() override;
     virtual void tick() override;
 public slots:
     void stateChanged(QMediaPlayer::State state);
-
 protected:
     QMediaPlayer *player;
     ScreenDrawer *drawer;

@@ -2,8 +2,8 @@
 #include <QDebug>
 #include <QTimer>
 
-//#define FRAMEDELAY 41
-#define FRAMEDELAY 1
+#define FRAMEDELAY 41
+//#define FRAMEDELAY 1
 
 
 SceneManager::SceneManager(ScreenDrawer *d): drawer(d)
@@ -33,6 +33,7 @@ void SceneManager::appendScene(Scene *scene)
 void SceneManager::nextScene()
 {
     (*current_scene)->disconnect(this);
+    (*current_scene)->stop();
     qDebug()<<"Number of scenes: "<<scenes.size();
     std::vector<Scene*>::iterator next_scene = current_scene;
     next_scene ++;

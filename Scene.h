@@ -11,6 +11,7 @@ public:
     virtual void drawTo(ScreenDrawer*) = 0;
     virtual void start() = 0;
     virtual void reset() = 0;
+    virtual void stop() = 0;
     virtual void tick() = 0;
 signals:
     void sceneFinished();

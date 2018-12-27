@@ -15,6 +15,7 @@ public:
     virtual void drawTo(ScreenDrawer*) override;
     virtual void start() override;
     virtual void reset() override;
+    virtual void stop() override {}
     virtual void tick() override;
 public slots:
     void willyStopped();

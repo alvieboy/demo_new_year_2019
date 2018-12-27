@@ -21,13 +21,13 @@ public:
     void startFrame();
     void finishFrame();
     void setVideoMode(bool) override;
-public slots:
-    void willyFinishedMove();
 protected:
     void paintEvent(QPaintEvent *event) override;
     void drawPixel(int x, int y, uint32_t color) override;
     void drawImage(int x, int y, QImage *);
     void drawHLine(int x, int y, int width, uint32_t color);
+    void drawVLine(int x, int y, int width, uint32_t color);
+
     QVideoWidget* getVideoWidget() override;
 
 
